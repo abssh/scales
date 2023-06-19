@@ -1,3 +1,11 @@
 .vscode/
 __pycach__/
 __pycache__/scale.cpython-310.pyc
+models/gui/__pycache__/main_window.cpython-310.pyc
+models/gui/__pycache__/__init__.cpython-310.pyc
+models/gui/__pycache__/appbar_content.cpython-310.pyc
+models/gui/__pycache__/body_content.cpython-310.pyc
+models/gui/__pycache__/note_choice.cpython-310.pyc
+models/gui/__pycache__/scale_choice.cpython-310.pyc
+models/gui/__pycache__/styles.cpython-310.pyc
+models/music/__pycache__/scale.cpython-310.pyc

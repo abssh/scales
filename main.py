@@ -1,21 +1,12 @@
-from scale import Scale
+from json import load
+from PyQt6.QtWidgets import QApplication
+from models.gui.main_window import MainWindow
+
+with open("data/scales.json", "rb") as jf:
+    database:dict = load(jf)
 
 
-# input [note, scale(major,minor)]
-starting_note=input("Choose your starting note:\n")
-scale_method=input("Choose your scale:\n")
-
-scales = {
-    #major
-    "major" : (2,2,1,2,2,2,1),
-
-    #minor
-    "minor" : (2,1,2,2,1,2,2,)
-}
-
-scale_method = scales[scale_method]
-
-scale = Scale(scale_method)
-
-scale.genarate_scale(starting_note=starting_note)
-
+app = QApplication([])
+mainWindow = MainWindow(database) 
+mainWindow.show()
+app.exec()

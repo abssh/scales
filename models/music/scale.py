@@ -28,7 +28,7 @@ class Scale:
             zero = self.next(zero, step) 
             s.append(notes[zero])
         
-        print(*s)
+        return s
 
 
 
