@@ -29,10 +29,17 @@ appbarStyle = {
           }
     """
 }
+bodyContentStyle = """
+QToolTip{
+    background-color: rgba(80, 80, 80, 0.3);
+    color: white;
+    border: none;
+}
+"""
 
 noteChoiceButtonsUnselected = """
 QLabel{ 
-    border-radius: 15%;
+    border-radius: 17%;
     font-size: 15px;
     background-color: rgba(190, 190, 190, 0.5);
     
@@ -42,7 +49,28 @@ QLabel{
 """
 noteChoiceButtonsSelected= """
 QLabel{ 
-    border-radius: 15%;
+    border-radius: 17%;
+    font-size: 15px;
+    background-color: rgba(240, 60, 80, 0.8);
+
+}QLabel:hover{
+    background-color: rgba(255, 60, 80, 0.9);
+}
+"""
+
+scaleChoiceButtonsUnselected = """
+QLabel{ 
+    border-radius: 17%;
+    font-size: 15px;
+    background-color: rgba(190, 190, 190, 0.5);
+    
+}QLabel:hover{
+    background-color: rgba(210, 210, 210, 0.5);
+}
+"""
+scaleChoiceButtonsSelected= """
+QLabel{ 
+    border-radius: 17%;
     font-size: 15px;
     background-color: rgba(240, 60, 80, 0.8);
 

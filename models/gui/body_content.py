@@ -5,6 +5,7 @@ from PyQt6 import QtWidgets
 
 from models.gui.note_choice import NoteChoice
 from models.gui.scale_choice import ScaleChoice
+from models.gui import styles
 from models.music.scale import Scale
 
 
@@ -14,7 +15,8 @@ class BodyContent(QtWidgets.QVBoxLayout):
         super().__init__()
         self.database = database
         self.p = parent
-        self.setContentsMargins(5, 0, 0, 5)
+        self.p.setStyleSheet(styles.bodyContentStyle)
+        self.setContentsMargins(5, 10, 0, 5)
         self.builder()
 
     def builder(self):
@@ -36,13 +38,13 @@ class BodyContent(QtWidgets.QVBoxLayout):
 
         self.addWidget(self.noteLabel)
         self.addWidget(self.noteList)
-        self.addStretch()
+        self.addStretch(2)
         self.addWidget(self.scaleLabel)
         self.addWidget(self.scaleList)
-        self.addStretch()
+        self.addStretch(2)
         self.addWidget(self.outputLabel)
         self.addWidget(self.output)
-        self.addStretch()
+        self.addStretch(1)
         self.p.setLayout(self)
 
     def update_output(self):

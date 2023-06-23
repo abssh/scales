@@ -4,7 +4,7 @@ from PyQt6 import QtWidgets
 from models.gui import styles
 
 
-class NoteChoice(QtWidgets.QFrame):
+class NoteChoice(QtWidgets.QScrollArea):
     notes = ["A",
              "A#",
              "B",
@@ -20,18 +20,30 @@ class NoteChoice(QtWidgets.QFrame):
 
     def __init__(self, parent = None) -> None:
         super().__init__()
+
         self.p = parent
-        self._layout = QtWidgets.QHBoxLayout()
         self.note = "A"
+        self.initialize()
         self.builder()
+
+    def initialize(self):
+        self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.horizontalScrollBar().hide()
+        self.setStyleSheet("border: none;")
+
+        self._layout = QtWidgets.QHBoxLayout()
+        self._layout.setSpacing(10)
+        self.body = QtWidgets.QWidget()
 
     def builder(self):
         self.buttons = []
         for n in self.notes:
             btn = QtWidgets.QLabel()
             btn.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-            btn.setFixedSize(30, 30)
+            btn.setFixedSize(35, 35)
             btn.setText(n)
+            btn.setToolTip(f"note: {n}")
             btn.mousePressEvent = self.do_something(n)
 
             if n == self.note:
@@ -41,8 +53,10 @@ class NoteChoice(QtWidgets.QFrame):
 
             self.buttons.append(btn)
             self._layout.addWidget(btn)
+        self._layout.addStretch()
+        self.body.setLayout(self._layout)
+        self.setWidget(self.body)
 
-        self.setLayout(self._layout)
 
     def do_something(self, something):
         def do_thing(*args):
