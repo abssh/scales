@@ -49,10 +49,10 @@ class AppBarContent(QtWidgets.QWidget):
         # title
         self.title = QtWidgets.QLabel()
         self.title.setStyleSheet(self.styles["QLabel"])
-        self.title.setText("this")
+        self.title.setText("Scales")
 
-        self._layout.setContentsMargins(7,4,7,4)
-        self._layout.setSpacing(6)
+        self._layout.setContentsMargins(7,1,7,7)
+        self._layout.setSpacing(10)
         self._layout.addWidget(self.title)
         self._layout.addStretch()
         self._layout.addWidget(self.hideB)
