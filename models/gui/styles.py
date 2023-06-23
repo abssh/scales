@@ -2,9 +2,8 @@
 appbarStyle = {
     # Qfr
     "QFrame":  """
-    QFrame{
         background-color: #ffdcab;
-        border: none;   }
+        border: none; 
     """,
     # Qla
     "QLabel":
@@ -30,6 +29,9 @@ appbarStyle = {
     """
 }
 bodyContentStyle = """
+QFrame{
+
+}
 QToolTip{
     background-color: rgba(80, 80, 80, 0.3);
     color: white;

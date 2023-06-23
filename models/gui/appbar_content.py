@@ -1,5 +1,7 @@
 import typing
 
+from PyQt6.QtCore import QEvent, QObject
+
 from models.gui import styles
 from PyQt6 import QtCore, QtGui
 from PyQt6 import QtWidgets
@@ -8,10 +10,10 @@ class AppBarContent(QtWidgets.QWidget):
     def __init__(self, parent: typing.Optional[QtWidgets.QWidget] = None) -> None:
         super().__init__(parent)
         self.Bsize = 25
-        self._gripSize = parent.parent()._gripSize
+        self._gripSize = self.window()._gripSize
         self.styles = styles.appbarStyle
         self._layout = QtWidgets.QHBoxLayout()
-        self.mw = parent.parent()
+        self.mw = self.window()
         self.initialize()
         self.builder()
         self.mos_flag=None
@@ -21,12 +23,8 @@ class AppBarContent(QtWidgets.QWidget):
 
 
     def initialize(self):
-        rect=self.parent().geometry()
-        self.setGeometry(rect-QtCore.QMargins
-                      (self._gripSize, self._gripSize, self._gripSize, 0))
-        self.setStyleSheet(
-            self.styles["QFrame"]
-        )
+        pass
+
 
     def builder(self):
         bs = self.Bsize
@@ -57,6 +55,7 @@ class AppBarContent(QtWidgets.QWidget):
         self._layout.addStretch()
         self._layout.addWidget(self.hideB)
         self._layout.addWidget(self.closeB)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Minimum)
         self.setLayout(self._layout)
 
 
@@ -71,6 +70,9 @@ class AppBarContent(QtWidgets.QWidget):
             rect = self.mw.geometry()
             rect.translate(p1.x()-p2.x(), p1.y()-p2.y())
             self.mw.setGeometry(rect)
+
     
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mos_flag = None
+        
+    

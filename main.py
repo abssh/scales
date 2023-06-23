@@ -8,5 +8,6 @@ with open("data/scales.json", "rb") as jf:
 
 app = QApplication([])
 mainWindow = MainWindow(database) 
+app.installEventFilter(mainWindow)
 mainWindow.show()
 app.exec()
